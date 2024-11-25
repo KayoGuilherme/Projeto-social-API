@@ -8,12 +8,12 @@ import {
   Put,
 } from '@nestjs/common';
 import { ContactService } from './contact.service';
-import { User } from 'src/decorator/user.decorator';
-import { Paramid } from 'src/decorator/Param-id.decorator';
-import { AuthGuard } from 'src/Guards/AuthGuard.guard';
-import { RoleGuard } from 'src/Guards/role.guard';
-import { Roles } from 'src/decorator/role.decorator';
-import { Role } from 'src/doador/dto/enums/role.enum';
+import { User } from '../decorator/user.decorator';
+import { Paramid } from '../decorator/Param-id.decorator';
+import { AuthGuard } from '../Guards/AuthGuard.guard';
+import { RoleGuard } from '../Guards/role.guard';
+import { Roles } from '../decorator/role.decorator';
+import { Role } from '../doador/dto/enums/role.enum';
 import { ContactDto } from './dto/contact.dto';
 
 @UseGuards(AuthGuard, RoleGuard)

@@ -1,9 +1,9 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Put, UseGuards } from '@nestjs/common';
 import { DonationService } from './donation.service';
 import { DonationDto } from './dto/Donation.dto';
-import { AuthGuard } from 'src/Guards/AuthGuard.guard';
+import { AuthGuard } from '../Guards/AuthGuard.guard';
 import { ApiTags } from '@nestjs/swagger';
-import { Paramid } from 'src/decorator/Param-id.decorator';
+import { Paramid } from '../decorator/Param-id.decorator';
 
 
 

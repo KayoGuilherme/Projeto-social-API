@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Get, Post, Put, UseGuards } from "@nestjs/common";
 import { AdressDTO } from "./dto/adress-create.dto";
-import { Paramid } from "src/decorator/Param-id.decorator";
+import { Paramid } from "../decorator/Param-id.decorator";
 import { AdressService } from "./adress.services";
-import { AuthGuard } from "src/Guards/AuthGuard.guard";
-import { User } from "src/decorator/user.decorator";
+import { AuthGuard } from "../Guards/AuthGuard.guard";
+import { User } from "../decorator/user.decorator";
 import { ApiTags } from "@nestjs/swagger";
 
 

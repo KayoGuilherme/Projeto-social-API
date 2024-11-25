@@ -10,10 +10,10 @@ import {
 } from '@nestjs/common';
 import { DoadorService } from './doador.service';
 import { DoadorDto } from './dto/users.dto';
-import { AuthGuard } from 'src/Guards/AuthGuard.guard';
+import { AuthGuard } from '../Guards/AuthGuard.guard';
 import { Role } from './dto/enums/role.enum';
-import { Roles } from 'src/decorator/role.decorator';
-import { Paramid } from 'src/decorator/Param-id.decorator';
+import { Roles } from '../decorator/role.decorator';
+import { Paramid } from '../decorator/Param-id.decorator';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('api/v1/users')
