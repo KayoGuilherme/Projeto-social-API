@@ -3,6 +3,7 @@ import { DonationService } from './donation.service';
 import { DonationDto } from './dto/Donation.dto';
 import { AuthGuard } from 'src/Guards/AuthGuard.guard';
 import { ApiTags } from '@nestjs/swagger';
+import { Paramid } from 'src/decorator/Param-id.decorator';
 
 
 
@@ -21,7 +22,7 @@ export class DonationController {
   }
 
   @Get(":id")
-  async getDonatePerId(@Param("id") id: number){
+  async getDonatePerId(@Paramid() id: number){
     return this.donationService.getDonatesById(id);
   }
 
@@ -32,22 +33,22 @@ export class DonationController {
   }
 
   @Put(":id")
-  async updateDonatePerId(@Body() {categoria, descricao, doadorId, quantidade, titulo}: DonationDto, @Param("id") id: number){
+  async updateDonatePerId(@Body() {categoria, descricao, doadorId, quantidade, titulo}: DonationDto, @Paramid() id: number){
     return this.donationService.updateDonatesById({ categoria, descricao, doadorId, quantidade, titulo}, id);
   }
 
   @Delete("id")
-  async deleteDonationPerId(@Param("id")  id: number) {
+  async deleteDonationPerId(@Paramid()  id: number) {
     return this.donationService.deleteDonateById(id);
   }
 
   @Patch("status/delivered/:id")
-  async updateStatusDonatePerId( @Param("id") id: number){
+  async updateStatusDonatePerId( @Paramid() id: number){
     return this.donationService.updateStatusToDeliveredDonate(id);
   }
 
   @Patch("status/cancel/:id")
-  async updateStatusToCancelDonatePerId( @Param("id") id: number){
+  async updateStatusToCancelDonatePerId( @Paramid() id: number){
     return this.donationService.updateStatusToCanceledDeliveredDonate(id);
   }
   
