@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Doador {
+  id             Int              @id @default(autoincrement())
+  nome           String
+  isCompany      Boolean
+  CPF            String
+  cnpj           String?
+  isAnonymous    Boolean?
+  role           Int              @default(1)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  Contato_Doador Contato_Doador[]
+  AdressDoador   AdressDoador[]
+}
+
+model Doacao {
+  id         Int          @id @default(autoincrement())
+  titulo     String
+  descricao  String
+  quantidade Int
+  categoria  Categoria
+  status     StatusDoacao @default(AGUARDANDO)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  doadorId   Int
+}
+
+model Contato_Doador {
+  id           Int      @id @default(autoincrement())
+  url          String?
+  tell_contato String
+  doadorId     Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  doador       Doador   @relation(fields: [doadorId], references: [id])
+}
+
+model AdressDoador {
+  id                  Int     @id @default(autoincrement())
+  CEP                 String
+  numero              String?
+  complemento         String
+  ponto_de_referencia String
+  bairro              String
+  estado              String
+  cidade              String
+  telefone_contato    String
+  Rua                 String
+  userId              Int
+  doador              Doador  @relation(fields: [userId], references: [id])
+}
+
+// model DeliveryAddress {
+//   id                  Int      @id @default(autoincrement())
+//   CEP                 String
+//   numero              String?
+//   complemento         String
+//   ponto_de_referencia String
+//   bairro              String
+//   estado              String
+//   cidade              String
+//   Rua                 String
+//   nome_company        String
+//   createdAt           DateTime @default(now())
+//   updatedAt           DateTime @updatedAt
+// }
+
+enum Categoria {
+  ROUPAS
+  BRINQUEDOS
+  ACESSORIOS
+  ALIMENTOS
+  OUTROS
+}
+
+enum StatusDoacao {
+  AGUARDANDO
+  ENTREGUE
+  CANCELADA
+}
